@@ -5,6 +5,12 @@ public class DataHorario extends Momento{
     private int minuto;
     private Data data;
 
+    public DataHorario(int hora, int minuto, Data data){
+        this.hora = 0;
+        this.minuto = 0;
+        this.data = data;
+
+    }
     public int getHora() {
         return hora;
     }
@@ -38,6 +44,37 @@ public class DataHorario extends Momento{
 
     @Override
     public int minutos(){
-        return 0;
+        int minutos = 0;
+        int minutosEmAno = (24*60)*365;
+        int minuto = getMinuto();
+        int hora = getHora();
+        Data data = getData();
+        int ano = data.getAno();
+        int mes = data.getMes();
+        int dia = data.getDia();
+
+        data.atualiza(ano, mes, dia);
+        atualiza(hora, minuto);
+
+        int deltaAno = ano - 1970;
+        minutos += (deltaAno*minutosEmAno);
+
+
+        int i = 1;
+        while(i < mes){
+            minutos += (data.limite.get(i)*24*60);
+            i+=1;
+        }
+
+        minutos += (dia-1)*24*60;
+        minutos += hora * 60 + minuto;
+
+
+
+
+
+
+
+        return minutos;
     }
 }

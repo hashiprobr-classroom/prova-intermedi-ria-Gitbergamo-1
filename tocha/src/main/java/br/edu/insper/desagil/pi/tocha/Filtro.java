@@ -7,7 +7,10 @@ public class Filtro {
         this.tipo = tipo;
     }
 
+
     public Imagem processa(Imagem imagem) {
+
+
         if (tipo.equals("media")) {
             // inicializa saída
 

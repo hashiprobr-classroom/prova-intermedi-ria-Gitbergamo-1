@@ -65,7 +65,30 @@ public class Data extends Momento{
 
     @Override
     public int minutos(){
-        return 0;
+        int minutos = 0;
+        int minutosEmAno = (24*60)*365;
+        int ano = getAno();
+        int mes = getMes();
+        int dia = getDia();
+        atualiza(ano, mes, dia);
+
+        int deltaAno = ano - 1970;
+        minutos += (deltaAno*minutosEmAno);
+
+
+        int i = 1;
+        while(i < mes){
+            minutos += (this.limite.get(i)*24*60);
+            i+=1;
+        }
+
+        minutos += dia*24*60;
+
+
+
+
+
+        return minutos;
     }
 
 }
