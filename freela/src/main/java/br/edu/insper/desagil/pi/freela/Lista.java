@@ -39,3 +39,4 @@ public class Lista {
     }
 
 }
+//acabei esquecendo de comitar na main
